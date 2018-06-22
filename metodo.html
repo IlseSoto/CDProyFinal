@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculadora</title>
+	<!--BOOTSTRAP-->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="js/proyJs.js"></script>
+
+</head>
+<body>
+	<!--Para la barra de nav-->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="wrapper">
+	<div class="row">
+		<div class="col-md-2">
+		<div class="nav-side-menu">
+		    <div class="brand">Seleccione una accion</div>
+		    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+		  
+		        <div class="menu-list">
+		  
+		            <ul id="menu-content" class="menu-content collapse out">
+		                <li>
+		                  <a href="#">
+		                  <i class="fa fa-dashboard fa-lg"></i> Home
+		                  </a>
+		                </li>
+
+		                <li  data-toggle="collapse" data-target="#products" class="collapsed">
+		                  <a href="#"><i class="fa fa-gift fa-lg"></i> Regresion Lineal <span class="arrow"></span></a>
+		                </li>
+		                <ul class="sub-menu collapse" id="products">
+		                    <li><a href="#">Simple</a></li>
+		                    <li onclick="showMultiple();">Multiple</li>
+		                    <li onclick="showPoli();">Polinomial</li>
+		                </ul>
+
+
+		                <li data-toggle="collapse" data-target="#service" class="collapsed">
+		                  <a href="#"><i class="fa fa-globe fa-lg"></i> Diferenciacion <span class="arrow"></span></a>
+		                </li>  
+		                <ul class="sub-menu collapse" id="service">
+		                  <li>Centralizada</li>
+		                  <li>Hacia la derecha</li>
+		                  <li>Hacia la izquierda</li>
+		                </ul>
+
+
+		                <li data-toggle="collapse" data-target="#new" class="collapsed">
+		                  <a href="#"><i class="fa fa-car fa-lg"></i> Integracion <span class="arrow"></span></a>
+		                </li>
+		                <ul class="sub-menu collapse" id="new">
+		                  <li>Regla de Simpson</li>
+		                  <li>Regla del Trapecio</li>
+		                </ul>
+
+
+		                 <li>
+		                  <a href="#">
+		                  <i class="fa fa-user fa-lg"></i> Profile
+		                  </a>
+		                  </li>
+
+		                 <li>
+		                  <a href="#">
+		                  <i class="fa fa-users fa-lg"></i> Users
+		                  </a>
+		                </li>
+		            </ul>
+		     </div>
+
+ 	</div>
+ </div>
+ 	<div class="col-md-10 container col-md-offset-2" style="background-color:cornflowerblue" id="page">
+ 		<h3><center>Bienvenido!</center></h3>
+ 		<p>realice Metodos numericos en segundos!</p>
+ 	</div>
+</div>
+	
+</div>
+
+
+
+	<!--MAS BOOTSTRAP-->
+	
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
