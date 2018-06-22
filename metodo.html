@@ -24,52 +24,37 @@
 		        <div class="menu-list">
 		  
 		            <ul id="menu-content" class="menu-content collapse out">
-		                <li>
-		                  <a href="#">
-		                  <i class="fa fa-dashboard fa-lg"></i> Home
-		                  </a>
+		                <li  onclick="showHome();">
+		                  <i class="fa fa-home fa-lg"></i> Home
 		                </li>
 
 		                <li  data-toggle="collapse" data-target="#products" class="collapsed">
-		                  <a href="#"><i class="fa fa-gift fa-lg"></i> Regresion Lineal <span class="arrow"></span></a>
+		                  <a href="#"><i class="fa fa-calculator"></i> Regresion Lineal <span class="arrow"></span></a>
 		                </li>
 		                <ul class="sub-menu collapse" id="products">
-		                    <li><a href="#">Simple</a></li>
+		                    <li onclick="showLineal();">Simple</li>
 		                    <li onclick="showMultiple();">Multiple</li>
 		                    <li onclick="showPoli();">Polinomial</li>
 		                </ul>
 
 
 		                <li data-toggle="collapse" data-target="#service" class="collapsed">
-		                  <a href="#"><i class="fa fa-globe fa-lg"></i> Diferenciacion <span class="arrow"></span></a>
+		                  <a href="#"><i class="fa fa fa-calculator"></i> Diferenciacion <span class="arrow"></span></a>
 		                </li>  
 		                <ul class="sub-menu collapse" id="service">
-		                  <li>Centralizada</li>
-		                  <li>Hacia la derecha</li>
-		                  <li>Hacia la izquierda</li>
+		                  <li onclick="showDifCent();">Centralizada</li>
+		                  <li onclick="showDifDer();">Hacia la derecha</li>
+		                  <li onclick="showDifIzq();">Hacia la izquierda</li>
 		                </ul>
 
 
 		                <li data-toggle="collapse" data-target="#new" class="collapsed">
-		                  <a href="#"><i class="fa fa-car fa-lg"></i> Integracion <span class="arrow"></span></a>
+		                  <a href="#"><i class="fa fa-calculator"></i> Integracion <span class="arrow"></span></a>
 		                </li>
 		                <ul class="sub-menu collapse" id="new">
-		                  <li>Regla de Simpson</li>
-		                  <li>Regla del Trapecio</li>
+		                  <li onclick="showSimpson();">Regla de Simpson</li>
+		                  <li onclick="showTrape();">Regla del Trapecio</li>
 		                </ul>
-
-
-		                 <li>
-		                  <a href="#">
-		                  <i class="fa fa-user fa-lg"></i> Profile
-		                  </a>
-		                  </li>
-
-		                 <li>
-		                  <a href="#">
-		                  <i class="fa fa-users fa-lg"></i> Users
-		                  </a>
-		                </li>
 		            </ul>
 		     </div>
 

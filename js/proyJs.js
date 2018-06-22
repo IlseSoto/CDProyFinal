@@ -1,23 +1,55 @@
 //var x1, x2, y;
+//var ip='http://172.20.10.4';
+var ip='http://localhost';
+
+function showLineal(){
+	document.getElementById("page").innerHTML='<form> <div class="form-group"><label for="cantX">Escriba los valores de X separados por comas</label>'+
+	'<input type="text" class="form-control" id="cantX" placeholder="ej: 1,2,67,54,32,79 "></div>'+
+	'<div class="form-group"><label for="cantY">Escriba los valores de Y separados por comas</label>'+
+	'<input type="text" class="form-control" id="cantY" placeholder="ej: 1,2,67,54,32,79 "></div>'+
+	'<button class="btn btn-primary" onclick="doLineal()">enviar</button></form>';
+}
+
+function doLineal(){
+	var x=document.getElementById("cantX").value;
+	//var x2=document.getElementById("cantX2").value;
+	var y=document.getElementById("cantY").value;
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState ==4 && this.status ==200){
+			alert('operacion exitosa!');
+			var result = JSON.parse(this.responseText);
+			//imprimo M LOL
+			result.forEach(element => {
+				console.log(element);
+			});
+		}
+	};
+	xhttp.open('GET', ip+':2409/rls/'+x+'/'+y, true);
+	xhttp.send();
+
+	
+
+	//document.getElementById("page").innerHTML=y+" aqui hay que poner el resultadoooo";
+}
 
 function showMultiple(){
-	document.getElementById("page").innerHTML='<form> <div class="form-group"><label for="cantX1">Escriba los valores de X1 separados por espacios</label>'+
-	'<input type="text" class="form-control" id="cantX1" placeholder="ej: 1 2 67 54 32 79 "></div>'+
-	'<div class="form-group"><label for="cantX2">Escriba los valores de X2 separados por espacios</label>'+
-	'<input type="text" class="form-control" id="cantX2" placeholder="ej: 1 2 67 54 32 79 "></div>'+
+	document.getElementById("page").innerHTML='<form> <div class="form-group"><label for="cantX1">Escriba los valores de X1 separados por comas</label>'+
+	'<input type="text" class="form-control" id="cantX1" placeholder="ej: 1,2,67,54,32,79 "></div>'+
+	'<div class="form-group"><label for="cantX2">Escriba los valores de X2 separados por comas</label>'+
+	'<input type="text" class="form-control" id="cantX2" placeholder="ej: 1,2,67,54,32,79 "></div>'+
 	'<div class="form-group"><label for="cantY">Escriba los valores de Y separados por espacios</label>'+
-	'<input type="text" class="form-control" id="cantY" placeholder="ej: 1 2 67 54 32 79 "></div>'+
+	'<input type="text" class="form-control" id="cantY" placeholder="ej: 1,2,67,54,32,79 "></div>'+
 	'<button class="btn btn-primary" onclick="doMultiple()">enviar</button></form>';
 }
 
 function doMultiple(){
-	var x1Esp=document.getElementById("cantX1").value;
-	var x2Esp=document.getElementById("cantX2").value;
-	var yEsp=document.getElementById("cantY").value;
+	var x1=document.getElementById("cantX1").value;
+	var x2=document.getElementById("cantX2").value;
+	var y=document.getElementById("cantY").value;
 
-	var x1= x1Esp.split(" ");
-	var x2= x2Esp.split(" ");
-	var y= yEsp.split(" ");
+	
 	/*x1=document.getElementById("cantX1").value;
 	x2=document.getElementById("cantX2").value;
 	y=document.getElementById("cantY").value;
@@ -43,21 +75,195 @@ function doPoli(){
 	var y=yEsp.split(" ");
 }
 
-function showDif(){
+function showDifCent(){
 	document.getElementById("page").innerHTML='<form> <div class="form-group"><label for="cantExp">Escriba el valor del exponencial</label>'+
-	'<input type="text" class="form-control" id="cantX1" placeholder="escriba su valor"></div>'+
-	'<div class="form-group"><label for="cantX">Escriba los valores de X separados por espacios</label>'+
-	'<input type="text" class="form-control" id="cantX" placeholder="ej: 1 2 67 54 32 79 "></div>'+
+	'<input type="text" class="form-control" id="cantExp" placeholder="escriba su valor"></div>'+
+	'<div class="form-group"><label for="cantX">Escriba el valor de X</label>'+
+	'<input type="text" class="form-control" id="cantX" placeholder="escriba su valor"></div>'+
 	'<div class="form-group"><label for="cantH">Escriba el valor de h </label>'+
 	'<input type="text" class="form-control" id="cantH" placeholder="escriba su valor aqui"></div>'+
-	'<button class="btn btn-primary" onclick="doDif();">enviar</button></form>';
+	'<button class="btn btn-primary" onclick="doDifCent();">enviar</button></form>';
 }
 
-function doDif(){
+function doDifCent(){
 	var exp =document.getElementById("cantExp").value;
-	var h= document.getElementById("cantH");
-	var xEsp= document.getElementById("cantExp");
+	var h= document.getElementById("cantH").value;
+	var x= document.getElementById("cantX").value;
 
-	var x=xExp.split(" ");
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState ==4 && this.status ==200){
+			alert('operacion exitosa!');
+			var result = JSON.parse(this.responseText);
+			document.getElementById("page").innerHTML="<div";
+			for(var i=0; i<result.procedure.length;i++){
+				document.getElementById("page").innerHTML+='<h3>iteracion '+i+":<br> "+result.procedure[i]+
+				"</h2><br><br>";
+			}
+			
+			document.getElementById("page").innerHTML+="<h1><b>resultado:</b> <br>"+result.result+"</h1>";
+			console.log(result);
+		}
+	};
+	xhttp.open('GET', ip+':1908/dhc/'+exp+'/'+x+'/'+h, true);
+	xhttp.send();
+
+	
 }
 
+function showDifIzq(){
+	document.getElementById("page").innerHTML='<form> <div class="form-group"><label for="cantExp">Escriba el valor del exponencial</label>'+
+	'<input type="text" class="form-control" id="cantExp" placeholder="escriba su valor"></div>'+
+	'<div class="form-group"><label for="cantX">Escriba el valor de X</label>'+
+	'<input type="text" class="form-control" id="cantX" placeholder="escriba su valor"></div>'+
+	'<div class="form-group"><label for="cantH">Escriba el valor de h </label>'+
+	'<input type="text" class="form-control" id="cantH" placeholder="escriba su valor aqui"></div>'+
+	'<button class="btn btn-primary" onclick="doDifIzq();">enviar</button></form>';
+}
+
+function doDifIzq(){
+	var exp =document.getElementById("cantExp").value;
+	var h= document.getElementById("cantH").value;
+	var x= document.getElementById("cantX").value;
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState ==4 && this.status ==200){
+			alert('operacion exitosa!');
+			var result = JSON.parse(this.responseText);
+			document.getElementById("page").innerHTML="";
+			for(var i=0; i<result.procedure.length;i++){
+				document.getElementById("page").innerHTML+='<h3>iteracion '+i+":<br> "+result.procedure[i]+
+				"</h2><br><br>";
+			}
+			
+			document.getElementById("page").innerHTML+="<h1><b>resultado:</b> <br>"+result.result+"</h1>";
+			console.log(result);
+		}
+	};
+	xhttp.open('GET', ip+':1908/dhi/'+exp+'/'+x+'/'+h, true);
+	xhttp.send();
+
+	
+}
+
+function showDifDer(){
+	document.getElementById("page").innerHTML='<form> <div class="form-group"><label for="cantExp">Escriba el valor del exponencial</label>'+
+	'<input type="text" class="form-control" id="cantExp" placeholder="escriba su valor"></div>'+
+	'<div class="form-group"><label for="cantX">Escriba el valor de X</label>'+
+	'<input type="text" class="form-control" id="cantX" placeholder="escriba su valor"></div>'+
+	'<div class="form-group"><label for="cantH">Escriba el valor de h </label>'+
+	'<input type="text" class="form-control" id="cantH" placeholder="escriba su valor aqui"></div>'+
+	'<button class="btn btn-primary" onclick="doDifDer();">enviar</button></form>';
+}
+
+function doDifDer(){
+	var exp =document.getElementById("cantExp").value;
+	var h= document.getElementById("cantH").value;
+	var x= document.getElementById("cantX").value;
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState ==4 && this.status ==200){
+			alert('operacion exitosa!');
+			var result = JSON.parse(this.responseText);
+			document.getElementById("page").innerHTML="";
+			for(var i=0; i<result.procedure.length;i++){
+				document.getElementById("page").innerHTML+='<h3>iteracion '+i+":<br> "+result.procedure[i]+
+				"</h2><br><br>";
+			}
+			
+			document.getElementById("page").innerHTML+="<h1><b>resultado:</b> <br>"+result.result+"</h1>";
+			console.log(result);
+		}
+	};
+	xhttp.open('GET', ip+':1908/dhd/'+exp+'/'+x+'/'+h, true);
+	xhttp.send();
+
+	
+}
+
+
+function showSimpson(){
+	document.getElementById("page").innerHTML='<form> <div class="form-group"><label for="cantA">Escriba el valor de a</label>'+
+	'<input type="text" class="form-control" id="cantA" placeholder="escriba su valor"></div>'+
+	'<div class="form-group"><label for="cantB">Escriba el valor de b</label>'+
+	'<input type="text" class="form-control" id="cantB" placeholder="escriba su valor"></div>'+
+	'<div class="form-group"><label for="cantExp">Escriba la expresion </label>'+
+	'<input type="text" class="form-control" id="cantExp" placeholder="escriba su valor aqui"></div>'+
+	'<div class="form-group"><label for="cantH">Escriba el valor de h </label>'+
+	'<input type="text" class="form-control" id="cantH" placeholder="escriba su valor aqui"></div>'+
+	'<button class="btn btn-primary" onclick="doSimpson();">enviar</button></form>';
+}
+
+function doSimpson(){
+	var a=document.getElementById("cantA").value;
+	var b=document.getElementById("cantB").value;
+	//var n=document.getElementById("cantN").value;
+	var h=document.getElementById("cantH").value;
+	var exp=document.getElementById("cantExp").value;
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState ==4 && this.status ==200){
+			alert('operacion exitosa!');
+			var result = JSON.parse(this.responseText);
+			document.getElementById("page").innerHTML="";
+			for(var i=0; i<result["f(X_n)"].length;i++){
+				document.getElementById("page").innerHTML+='<h3>iteracion '+i+":<br> "+result["f(X_n)"][i]+
+				"</h2><br><br>";
+			}
+			
+			document.getElementById("page").innerHTML+="<h1><b>resultado:</b> <br>"+result.I+"</h1>";
+			console.log(result);
+		}
+	};
+	xhttp.open('GET', ip+':2511/simpson/'+a+'/'+b+'/'+exp+'/None/'+h, true);
+	xhttp.send();
+
+
+}
+
+function showTrape(){
+	document.getElementById("page").innerHTML='<form> <div class="form-group"><label for="cantA">Escriba el valor de a</label>'+
+	'<input type="text" class="form-control" id="cantA" placeholder="escriba su valor"></div>'+
+	'<div class="form-group"><label for="cantB">Escriba el valor de b</label>'+
+	'<input type="text" class="form-control" id="cantB" placeholder="escriba su valor"></div>'+
+	'<div class="form-group"><label for="cantExp">Escriba el valor de exp </label>'+
+	'<input type="text" class="form-control" id="cantExp" placeholder="escriba su valor aqui"></div>'+
+	'<div class="form-group"><label for="cantH">Escriba el valor de h </label>'+
+	'<input type="text" class="form-control" id="cantH" placeholder="escriba su valor aqui"></div>'+
+	'<button class="btn btn-primary" onclick="doTrape();">enviar</button></form>';
+}
+
+function doTrape(){
+	var a=document.getElementById("cantA").value;
+	var b=document.getElementById("cantB").value;
+	//var n=document.getElementById("cantN").value;
+	var h=document.getElementById("cantH").value;
+	var exp=document.getElementById("cantExp").value;
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState ==4 && this.status ==200){
+			alert('operacion exitosa!');
+			var result = JSON.parse(this.responseText);
+			document.getElementById("page").innerHTML="";
+			for(var i=0; i<result["f(X_n)"].length;i++){
+				document.getElementById("page").innerHTML+='<h3>iteracion '+i+":<br> "+result["f(X_n)"][i]+
+				"</h2><br><br>";
+			}
+			
+			document.getElementById("page").innerHTML+="<h1><b>resultado:</b> <br>"+result.I+"</h1>";
+			console.log(result);
+		}
+	};
+	xhttp.open('GET', ip+':2511/trapecio/'+a+'/'+b+'/'+exp+'/None/'+h, true);
+	xhttp.send();
+
+
+}
+
+function showHome(){
+	document.getElementById("page").innerHTML='<h3><center>Bienvenido!</center></h3> <p>realice Metodos numericos en segundos!</p>';
+}
