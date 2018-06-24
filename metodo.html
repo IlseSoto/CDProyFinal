@@ -4,10 +4,17 @@
 	<meta charset="UTF-8">
 	<title>Calculadora</title>
 	<!--BOOTSTRAP-->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+       
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="js/proyJs.js"></script>
 
 </head>
@@ -60,9 +67,55 @@
 
  	</div>
  </div>
- 	<div class="col-md-10 container col-md-offset-2" style="background-color:cornflowerblue" id="page">
- 		<h3><center>Bienvenido!</center></h3>
- 		<p>realice Metodos numericos en segundos!</p>
+ 	<div class="col-md-10 container col-md-offset-2" style="background-color:cornflowerblue" id="pageCont">
+		<div class="row">
+		<div class="col-md-10" id="page">
+ 			<h3><center>Bienvenido!</center></h3>
+			 <p>realice Metodos numericos en segundos!</p>
+			</div>
+		</div>
+		 <div class="row">
+		 <div class="col-md-6 col-md-offset-2" id="blanco">
+				<table id="tableM">
+						<thead>
+								<tr>
+										<th data-field="x">X</th>
+										<th data-field="y">Y</th>
+										<th data-field="b">B</th>
+								</tr>
+						</thead>
+				</table>
+		 </div>
+		</div>
+
+		<div class="row">
+		 <div class="col-md-6 col-md-offset-2" id="blanco">
+				<table id="tableME">
+						<thead>
+								<tr>
+										<th data-field="x"></th>
+										<th data-field="y"></th>
+										<th data-field="ae"></th>
+								</tr>
+						</thead>
+				</table>
+		 </div>
+		 </div>
+
+		 <div class="row">
+				<div class="col-md-6 col-md-offset-2" id="blanco">
+						<table id="tableMF">
+								<thead>
+										<tr>
+												<th data-field="x"></th>
+												<th data-field="y"></th>
+												<th data-field="af"></th>
+										</tr>
+								</thead>
+						</table>
+				 </div>
+		 </div>
+
  	</div>
 </div>
 	
@@ -71,9 +124,11 @@
 
 
 	<!--MAS BOOTSTRAP-->
-	
+		
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
 </body>
 </html>

@@ -152,8 +152,11 @@ p{
   text-align: center;
 }
 
-.content{
-  height: 100%
-  background-color: blue;
+#blanco{
+  background-color: white;
+}
+
+#pageCont{
+  height: 100%;
 }
 

@@ -3,11 +3,11 @@
 var ip='http://localhost';
 
 function showLineal(){
-	document.getElementById("page").innerHTML='<form> <div class="form-group"><label for="cantX">Escriba los valores de X separados por comas</label>'+
+	document.getElementById("page").innerHTML=' <div class="form-group"><label for="cantX">Escriba los valores de X separados por comas</label>'+
 	'<input type="text" class="form-control" id="cantX" placeholder="ej: 1,2,67,54,32,79 "></div>'+
 	'<div class="form-group"><label for="cantY">Escriba los valores de Y separados por comas</label>'+
 	'<input type="text" class="form-control" id="cantY" placeholder="ej: 1,2,67,54,32,79 "></div>'+
-	'<button class="btn btn-primary" onclick="doLineal()">enviar</button></form>';
+	'<button class="btn btn-primary" onclick="doLineal();">enviar</button>';
 }
 
 function doLineal(){
@@ -15,19 +15,74 @@ function doLineal(){
 	//var x2=document.getElementById("cantX2").value;
 	var y=document.getElementById("cantY").value;
 
-	var xhttp = new XMLHttpRequest();
+	/*var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(this.readyState ==4 && this.status ==200){
 			alert('operacion exitosa!');
 			var result = JSON.parse(this.responseText);
 			//imprimo M LOL
-			result.forEach(element => {
-				console.log(element);
-			});
+			document.getElementById("page").innerHTML="<h3>Resultado:</h3><br> "+result.model;
+			
 		}
 	};
 	xhttp.open('GET', ip+':2409/rls/'+x+'/'+y, true);
-	xhttp.send();
+	xhttp.send();*/
+
+	//var $table = $('#tableM');
+			var datosM=[];
+			var datosME=[];
+			var datosMF=[];
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+                if(this.readyState ==4 && this.status ==200){
+                    alert('operacion exitosa!');
+                    var result = JSON.parse(this.responseText);
+                    //imprimo M LOL
+                    //document.getElementById("page").innerHTML=result.M[0].length;
+                   
+                       for(var j=0; j<result.M[0].length;j++){
+                           datosM.push({"x":result.M[j][0],
+							"y":result.M[j][1],
+							"b":result.B[j]
+						});
+						
+						datosME.push({
+							"x":result.ME[j][0],
+							"y":result.ME[j][1],
+							"ae":result.AE[j]
+						});
+
+						datosMF.push({
+							"x":result.MF[j][0],
+							"y":result.MF[j][0],
+							"af":result.AF[j]
+						});
+					   }
+					   
+					   console.log(datosME);
+                       $(function () {
+                            $('#tableM').bootstrapTable({
+                                data: datosM
+                            });
+						});
+						
+						$(function () {
+                            $('#tableME').bootstrapTable({
+                                data: datosME
+                            });
+						});
+						
+						$(function () {
+                            $('#tableMF').bootstrapTable({
+                                data: datosMF
+                            });
+                        });
+                   
+                }
+            };
+            xhttp.open('GET', ip+':2409/rls/'+x+'/'+y, true);
+            xhttp.send();
 
 	
 
@@ -35,13 +90,13 @@ function doLineal(){
 }
 
 function showMultiple(){
-	document.getElementById("page").innerHTML='<form> <div class="form-group"><label for="cantX1">Escriba los valores de X1 separados por comas</label>'+
+	document.getElementById("page").innerHTML=' <div class="form-group"><label for="cantX1">Escriba los valores de X1 separados por comas</label>'+
 	'<input type="text" class="form-control" id="cantX1" placeholder="ej: 1,2,67,54,32,79 "></div>'+
 	'<div class="form-group"><label for="cantX2">Escriba los valores de X2 separados por comas</label>'+
 	'<input type="text" class="form-control" id="cantX2" placeholder="ej: 1,2,67,54,32,79 "></div>'+
 	'<div class="form-group"><label for="cantY">Escriba los valores de Y separados por espacios</label>'+
 	'<input type="text" class="form-control" id="cantY" placeholder="ej: 1,2,67,54,32,79 "></div>'+
-	'<button class="btn btn-primary" onclick="doMultiple()">enviar</button></form>';
+	'<button class="btn btn-primary" onclick="doMultiple()">enviar</button>';
 }
 
 function doMultiple(){
@@ -55,24 +110,48 @@ function doMultiple(){
 	y=document.getElementById("cantY").value;
 	alert(x1 +", "+x2+", "+y);*/
 
-	document.getElementById("page").innerHTML=y+" aqui hay que poner el resultadoooo";
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState ==4 && this.status ==200){
+			alert('operacion exitosa!');
+			var result = JSON.parse(this.responseText);
+			//imprimo M LOL
+			document.getElementById("page").innerHTML="<h3>Resultado:</h3><br> "+result.model;
+			
+		}
+	};
+	xhttp.open('GET', ip+':2409/rlm/'+x1+'/'+x2+'/'+y, true);
+	xhttp.send();
+
+	
 }
 
 function showPoli(){
-	document.getElementById("page").innerHTML='<form> <div class="form-group"><label for="cantX">Escriba los valores de X separados por espacios</label>'+
+	document.getElementById("page").innerHTML=' <div class="form-group"><label for="cantX">Escriba los valores de X separados por espacios</label>'+
 	'<input type="text" class="form-control" id="cantX" placeholder="ej: 1 2 67 54 32 79 "></div>'+
 	'<div class="form-group"><label for="cantY">Escriba los valores de Y separados por espacios</label>'+
 	'<input type="text" class="form-control" id="cantY" placeholder="ej: 1 2 67 54 32 79 "></div>'+
-	'<button class="btn btn-primary" onclick="doPoli()">enviar</button></form>';
+	'<button class="btn btn-primary" onclick="doPoli()">enviar</button>';
 
 }
 
 function doPoli(){
-	var xEsp=document.getElementById("cantX").value;
-	var yEsp=document.getElementById("cantY").value;
+	var x=document.getElementById("cantX").value;
+	var y=document.getElementById("cantY").value;
 
-	var x=xEsp.split(" ");
-	var y=yEsp.split(" ");
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState ==4 && this.status ==200){
+			alert('operacion exitosa!');
+			var result = JSON.parse(this.responseText);
+			//imprimo M LOL
+			document.getElementById("page").innerHTML="<h3>Resultado:</h3><br> "+result.model;
+			
+		}
+	};
+	xhttp.open('GET', ip+':2409/rlp/'+x+'/'+y, true);
+	xhttp.send();
+
 }
 
 function showDifCent(){
