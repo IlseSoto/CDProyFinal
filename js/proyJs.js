@@ -33,13 +33,24 @@ function doLineal(){
 			var datosME=[];
 			var datosMF=[];
 
+			document.getElementById("mx").innerHTML="X +";
+			document.getElementById("my").innerHTML="Y =";
+			document.getElementById("mb").innerHTML="B";
+			document.getElementById("mex").innerHTML="X +";
+			document.getElementById("mey").innerHTML="Y =";
+			document.getElementById("mae").innerHTML="AE";
+			document.getElementById("mfx").innerHTML="X +";
+			document.getElementById("mfy").innerHTML="Y =";
+			document.getElementById("maf").innerHTML="AF";
+
+
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function(){
                 if(this.readyState ==4 && this.status ==200){
                     alert('operacion exitosa!');
                     var result = JSON.parse(this.responseText);
                     //imprimo M LOL
-                    //document.getElementById("page").innerHTML=result.M[0].length;
+                    document.getElementById("resultado").innerHTML="<h3>Resultado:</h3><br> <h2>"+result.model+"</h2><br>";
                    
                        for(var j=0; j<result.M[0].length;j++){
                            datosM.push({"x":result.M[j][0],
@@ -55,7 +66,7 @@ function doLineal(){
 
 						datosMF.push({
 							"x":result.MF[j][0],
-							"y":result.MF[j][0],
+							"y":result.MF[j][1],
 							"af":result.AF[j]
 						});
 					   }
@@ -94,7 +105,7 @@ function showMultiple(){
 	'<input type="text" class="form-control" id="cantX1" placeholder="ej: 1,2,67,54,32,79 "></div>'+
 	'<div class="form-group"><label for="cantX2">Escriba los valores de X2 separados por comas</label>'+
 	'<input type="text" class="form-control" id="cantX2" placeholder="ej: 1,2,67,54,32,79 "></div>'+
-	'<div class="form-group"><label for="cantY">Escriba los valores de Y separados por espacios</label>'+
+	'<div class="form-group"><label for="cantY">Escriba los valores de Y separados por comas</label>'+
 	'<input type="text" class="form-control" id="cantY" placeholder="ej: 1,2,67,54,32,79 "></div>'+
 	'<button class="btn btn-primary" onclick="doMultiple()">enviar</button>';
 }
@@ -104,11 +115,31 @@ function doMultiple(){
 	var x2=document.getElementById("cantX2").value;
 	var y=document.getElementById("cantY").value;
 
+	var datosM=[];
+	var datosME=[];
+	var datosMF=[];
+
+	document.getElementById("mx").innerHTML="X2 +";
+	document.getElementById("mx2").innerHTML="X +";
+	document.getElementById("mex2").innerHTML="X +";
+	document.getElementById("mfx2").innerHTML="X +";
+	document.getElementById("my").innerHTML="Y =";
+	document.getElementById("mb").innerHTML="B";
+	document.getElementById("mex").innerHTML="X2 +";
+	document.getElementById("mey").innerHTML="Y =";
+	document.getElementById("mae").innerHTML="AE";
+	document.getElementById("mfx").innerHTML="X2 +";
+	document.getElementById("mfy").innerHTML="Y =";
+	document.getElementById("maf").innerHTML="AF";
+
+
 	
 	/*x1=document.getElementById("cantX1").value;
 	x2=document.getElementById("cantX2").value;
 	y=document.getElementById("cantY").value;
 	alert(x1 +", "+x2+", "+y);*/
+
+	
 
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
@@ -116,7 +147,46 @@ function doMultiple(){
 			alert('operacion exitosa!');
 			var result = JSON.parse(this.responseText);
 			//imprimo M LOL
-			document.getElementById("page").innerHTML="<h3>Resultado:</h3><br> "+result.model;
+			document.getElementById("resultado").innerHTML="<h3>Resultado:</h3><br> <h2>"+result.model+"</h2><br>";
+			for(var j=0; j<result.M[0].length;j++){
+				datosM.push({"x2":result.M[j][0],
+				"x":result.M[j][1],
+				"y":result.M[j][2],
+				"b":result.B[j]
+			 });
+			 
+			 datosME.push({
+				 "x2":result.ME[j][0],
+				 "x":result.M[j][1],
+				 "y":result.ME[j][2],
+				 "ae":result.AE[j]
+			 });
+
+			 datosMF.push({
+				 "x2":result.MF[j][0],
+				 "x":result.M[j][1],
+				 "y":result.MF[j][2],
+				 "af":result.AF[j]
+			 });
+			}
+
+			$(function () {
+				$('#tableM').bootstrapTable({
+					data: datosM
+				});
+			});
+			
+			$(function () {
+				$('#tableME').bootstrapTable({
+					data: datosME
+				});
+			});
+			
+			$(function () {
+				$('#tableMF').bootstrapTable({
+					data: datosMF
+				});
+			});
 			
 		}
 	};
@@ -139,13 +209,66 @@ function doPoli(){
 	var x=document.getElementById("cantX").value;
 	var y=document.getElementById("cantY").value;
 
+	var datosM=[];
+	var datosME=[];
+	var datosMF=[];
+
+	document.getElementById("mx").innerHTML="X +";
+	document.getElementById("my").innerHTML="Y =";
+	document.getElementById("mb").innerHTML="B";
+	document.getElementById("mex").innerHTML="X +";
+	document.getElementById("mey").innerHTML="Y =";
+	document.getElementById("mae").innerHTML="AE";
+	document.getElementById("mfx").innerHTML="X +";
+	document.getElementById("mfy").innerHTML="Y =";
+	document.getElementById("maf").innerHTML="AF";
+
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(this.readyState ==4 && this.status ==200){
 			alert('operacion exitosa!');
 			var result = JSON.parse(this.responseText);
 			//imprimo M LOL
-			document.getElementById("page").innerHTML="<h3>Resultado:</h3><br> "+result.model;
+			document.getElementById("resultado").innerHTML="<h3>Resultado:</h3><br> <h2>"+result.model+"</h2><br>";
+			for(var j=0; j<result.M[0].length;j++){
+				datosM.push({"x":result.M[j][0],
+				 "y":result.M[j][1],
+				 "b":result.B[j]
+			 });
+			 
+			 datosME.push({
+				 "x":result.ME[j][0],
+				 "y":result.ME[j][1],
+				 "ae":result.AE[j]
+			 });
+
+			 datosMF.push({
+				 "x":result.MF[j][0],
+				 "y":result.MF[j][1],
+				 "af":result.AF[j]
+			 });
+			}
+			
+			console.log(datosME);
+			$(function () {
+				 $('#tableM').bootstrapTable({
+					 data: datosM
+				 });
+			 });
+			 
+			 $(function () {
+				 $('#tableME').bootstrapTable({
+					 data: datosME
+				 });
+			 });
+			 
+			 $(function () {
+				 $('#tableMF').bootstrapTable({
+					 data: datosMF
+				 });
+			 });
+		
+
 			
 		}
 	};
@@ -174,13 +297,13 @@ function doDifCent(){
 		if(this.readyState ==4 && this.status ==200){
 			alert('operacion exitosa!');
 			var result = JSON.parse(this.responseText);
-			document.getElementById("page").innerHTML="<div";
+			document.getElementById("resultado").innerHTML="";
 			for(var i=0; i<result.procedure.length;i++){
-				document.getElementById("page").innerHTML+='<h3>iteracion '+i+":<br> "+result.procedure[i]+
+				document.getElementById("resultado").innerHTML+='<h3>iteracion '+i+":<br> "+result.procedure[i]+
 				"</h2><br><br>";
 			}
 			
-			document.getElementById("page").innerHTML+="<h1><b>resultado:</b> <br>"+result.result+"</h1>";
+			document.getElementById("resultado").innerHTML+="<h1><b>resultado:</b> <br>"+result.result+"</h1>";
 			console.log(result);
 		}
 	};
@@ -210,13 +333,13 @@ function doDifIzq(){
 		if(this.readyState ==4 && this.status ==200){
 			alert('operacion exitosa!');
 			var result = JSON.parse(this.responseText);
-			document.getElementById("page").innerHTML="";
+			document.getElementById("resultado").innerHTML="";
 			for(var i=0; i<result.procedure.length;i++){
-				document.getElementById("page").innerHTML+='<h3>iteracion '+i+":<br> "+result.procedure[i]+
+				document.getElementById("resultado").innerHTML+='<h3>iteracion '+i+":<br> "+result.procedure[i]+
 				"</h2><br><br>";
 			}
 			
-			document.getElementById("page").innerHTML+="<h1><b>resultado:</b> <br>"+result.result+"</h1>";
+			document.getElementById("resultado").innerHTML+="<h1><b>resultado:</b> <br>"+result.result+"</h1>";
 			console.log(result);
 		}
 	};
@@ -246,13 +369,13 @@ function doDifDer(){
 		if(this.readyState ==4 && this.status ==200){
 			alert('operacion exitosa!');
 			var result = JSON.parse(this.responseText);
-			document.getElementById("page").innerHTML="";
+			document.getElementById("resultado").innerHTML="";
 			for(var i=0; i<result.procedure.length;i++){
-				document.getElementById("page").innerHTML+='<h3>iteracion '+i+":<br> "+result.procedure[i]+
+				document.getElementById("resultado").innerHTML+='<h3>iteracion '+i+":<br> "+result.procedure[i]+
 				"</h2><br><br>";
 			}
 			
-			document.getElementById("page").innerHTML+="<h1><b>resultado:</b> <br>"+result.result+"</h1>";
+			document.getElementById("resultado").innerHTML+="<h1><b>resultado:</b> <br>"+result.result+"</h1>";
 			console.log(result);
 		}
 	};
@@ -287,13 +410,13 @@ function doSimpson(){
 		if(this.readyState ==4 && this.status ==200){
 			alert('operacion exitosa!');
 			var result = JSON.parse(this.responseText);
-			document.getElementById("page").innerHTML="";
+			document.getElementById("resultado").innerHTML="";
 			for(var i=0; i<result["f(X_n)"].length;i++){
-				document.getElementById("page").innerHTML+='<h3>iteracion '+i+":<br> "+result["f(X_n)"][i]+
+				document.getElementById("resultado").innerHTML+='<h3>iteracion '+i+":<br> "+result["f(X_n)"][i]+
 				"</h2><br><br>";
 			}
 			
-			document.getElementById("page").innerHTML+="<h1><b>resultado:</b> <br>"+result.I+"</h1>";
+			document.getElementById("resultado").innerHTML+="<h1><b>resultado:</b> <br>"+result.I+"</h1>";
 			console.log(result);
 		}
 	};
@@ -327,13 +450,13 @@ function doTrape(){
 		if(this.readyState ==4 && this.status ==200){
 			alert('operacion exitosa!');
 			var result = JSON.parse(this.responseText);
-			document.getElementById("page").innerHTML="";
+			document.getElementById("resultado").innerHTML="";
 			for(var i=0; i<result["f(X_n)"].length;i++){
-				document.getElementById("page").innerHTML+='<h3>iteracion '+i+":<br> "+result["f(X_n)"][i]+
+				document.getElementById("resultado").innerHTML+='<h3>iteracion '+i+":<br> "+result["f(X_n)"][i]+
 				"</h2><br><br>";
 			}
 			
-			document.getElementById("page").innerHTML+="<h1><b>resultado:</b> <br>"+result.I+"</h1>";
+			document.getElementById("resultado").innerHTML+="<h1><b>resultado:</b> <br>"+result.I+"</h1>";
 			console.log(result);
 		}
 	};
@@ -345,4 +468,7 @@ function doTrape(){
 
 function showHome(){
 	document.getElementById("page").innerHTML='<h3><center>Bienvenido!</center></h3> <p>realice Metodos numericos en segundos!</p>';
+	document.getElementById("resultado").innerHTML="";
+	document.getElementById("blanco").innerHTML="";
+
 }
